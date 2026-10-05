@@ -1,5 +1,11 @@
-import { EditorShell } from "@/components/editor/editor-shell";
+import { auth } from "@clerk/nextjs/server";
+import { redirect } from "next/navigation";
 
-export default function Home() {
-  return <EditorShell />;
+/** Redirects authenticated visitors to the editor and other visitors to sign in. */
+export default async function Home() {
+  const { isAuthenticated, redirectToSignIn } = await auth();
+
+  if (!isAuthenticated) return redirectToSignIn();
+
+  redirect("/editor");
 }

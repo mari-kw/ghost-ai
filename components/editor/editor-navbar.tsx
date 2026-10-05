@@ -1,5 +1,6 @@
 "use client";
 
+import { UserButton } from "@clerk/nextjs";
 import { PanelLeftClose, PanelLeftOpen } from "lucide-react";
 import type { Ref } from "react";
 
@@ -12,6 +13,7 @@ interface EditorNavbarProps {
   toggleRef?: Ref<HTMLButtonElement>;
 }
 
+/** Renders the editor header with a sidebar toggle and Clerk account menu. */
 export function EditorNavbar({
   isSidebarOpen,
   onToggleSidebar,
@@ -37,7 +39,9 @@ export function EditorNavbar({
         </Button>
       </div>
       <div />
-      <div />
+      <div className="flex items-center justify-end">
+        <UserButton />
+      </div>
     </header>
   );
 }

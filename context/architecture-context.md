@@ -31,6 +31,8 @@
 
 ## Auth and Collaboration Model
 
+- The root layout provides Clerk to all routes. Root `proxy.ts` protects application routes by default; only the sign-in/sign-up paths from the existing Clerk environment variables and their nested flows are public. Framework assets and the favicon bypass authentication.
+- `/` redirects signed-in users to `/editor` and signed-out users to Clerk's configured sign-in path. `/editor` hosts the editor shell and Clerk's default user menu/profile flows.
 - Every project has a single owner (Clerk user ID).
 - Projects can include additional collaborators.
 - Only authenticated users can access protected routes.
