@@ -35,7 +35,7 @@ Tailwind utility names map to these variables. Use `bg-base`, `bg-surface`, `tex
 | UI text   | Geist Sans | `--font-geist-sans` |
 | Code/mono | Geist Mono | `--font-geist-mono` |
 
-Both fonts are loaded via `next/font/google` and applied as CSS variables on the `<html>` element. The base `body` uses Geist Sans with `antialiased`.
+Both fonts are loaded via `next/font/google` and applied as CSS variables on the `<html>` element. The base `body` applies the generated Geist Sans class directly with `antialiased`; Clerk uses the same generated font family. Code text uses the `font-mono` token mapped to Geist Mono.
 
 ## Border Radius
 
@@ -106,10 +106,17 @@ Lucide React. Stroke-based icons only — no filled variants. Icon sizes: `h-4 w
 
 ## Editor Chrome (02)
 
-- The home page composes the navbar and sidebar over an empty canvas region for this chapter. Sidebar visibility is local UI state, initially closed.
-- The navbar is `h-14`, with equal-width left/right sections and a center section. Only the left sidebar toggle is populated.
+- The `/editor` page composes the navbar and sidebar over an empty canvas region. Sidebar visibility is local UI state, initially closed.
+- The navbar is `h-14`, with equal-width left/right sections and a center section. The left section contains the sidebar toggle; the right section contains Clerk's built-in `UserButton`.
 - The sidebar is positioned absolutely inside the workspace, inset from its edges, so it never changes canvas width. It translates off the left edge when closed and is inert and hidden from assistive technology.
 - New Project is a placeholder action: the sidebar accepts an optional callback and disables the button until a future feature supplies it. No project creation or dialogs are implemented here.
+
+## Authentication (03)
+
+- Sign-in and sign-up share an equal 50/50 layout on large screens. The left panel has a compact top logo, centered headline and three feature rows with small Lucide icons, and a bottom copyright line. The right panel centers the built-in Clerk form. Small screens show only the form.
+- The left panel uses `bg-auth-panel` (`--bg-auth-panel`), a solid mix of 7% brand cyan and the existing surface color, against the right panel's base background. No gradients or feature cards.
+- Clerk uses the `dark` theme from `@clerk/ui/themes`, with appearance variables mapped to existing application color, font, and radius tokens at the root provider.
+- Clerk owns the sign-in, sign-up, user menu, and profile flows; their internals remain unchanged.
 
 ## Dialog Pattern (Ready for Future Features)
 
