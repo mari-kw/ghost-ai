@@ -23,6 +23,7 @@ const features = [
   },
 ];
 
+/** Wraps authentication pages with a responsive layout and product feature panel. */
 export default function AuthLayout({ children }: AuthLayoutProps) {
   return (
     <main className="grid min-h-dvh w-full flex-1 grid-cols-1 bg-base lg:grid-cols-2">

@@ -1,3 +1,8 @@
+/**
+ * Uses the fallback for an empty auth path and removes trailing slashes.
+ * @returns A non-root local path without a query, fragment, backslash, or whitespace.
+ * @throws {Error} If the normalized path is not a valid local auth path.
+ */
 function localAuthPath(value: string | undefined, fallback: string) {
   const path = (value || fallback).replace(/\/+$/, "");
 

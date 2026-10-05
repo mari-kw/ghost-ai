@@ -13,6 +13,7 @@ interface EditorNavbarProps {
   toggleRef?: Ref<HTMLButtonElement>;
 }
 
+/** Renders the editor header with a sidebar toggle and Clerk account menu. */
 export function EditorNavbar({
   isSidebarOpen,
   onToggleSidebar,
